@@ -1,0 +1,14 @@
+metadata:
+  name: hello-world
+  labels:
+    app: hello-world
+apiVersion: v1
+kind: Service
+spec:
+  ports:
+  - name: http-unsec
+    protocol: TCP
+    port: 9080
+    targetPort: 9080
+  selector:
+    name: hello-world
