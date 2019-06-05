@@ -17,7 +17,7 @@ spec:
       - name: cache-volume
         emptyDir: {}
       containers:
-      - image: 'null'
+      - image: harbor.jkwong.cloudns.cx/jkwong-pub/hello-world:2
         imagePullPolicy: IfNotPresent
         livenessProbe:
           periodSeconds: 5
