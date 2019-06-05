@@ -16,8 +16,11 @@ spec:
       volumes:
       - name: cache-volume
         emptyDir: {}
+      - name: liberty-overrides
+        configMap:
+          name: liberty-overrides
       containers:
-      - image: harbor.jkwong.cloudns.cx/jkwong-pub/hello-world:2
+      - image: harbor.jkwong.cloudns.cx/jkwong-pub/hello-world:3
         imagePullPolicy: IfNotPresent
         livenessProbe:
           periodSeconds: 5
@@ -60,6 +63,10 @@ spec:
         volumeMounts:
         - name: cache-volume
           mountPath: /opt/ibm/wlp/output
+        - name: liberty-overrides
+          mountPath: /config/configDropins/overrides/override-server.xml
+          readOnly: true
+          subPath: override-server.xml
       securityContext:
         privileged: false
         capabilities:
