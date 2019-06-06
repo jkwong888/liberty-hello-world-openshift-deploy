@@ -17,7 +17,7 @@ pipeline {
 
               for (File f : files) {
                 def objects = openshift.apply(readFile(f.path())
-                echo "Created objects from path ${f.path()}:\n ${objects.names()}"
+                println "Created objects from path ${f.path()}:\n ${objects.names()}"
               }
             }
           }
