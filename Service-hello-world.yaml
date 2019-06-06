@@ -11,4 +11,4 @@ spec:
     port: 9080
     targetPort: 9080
   selector:
-    name: hello-world
+    app: hello-world
