@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: env-overrides
+  labels:
+    app: hello-world
+data:
+  override-env-server.xml: |-
+    <server>
+        <jndiEntry jndiName="env" value="dev" />
+    </server>
