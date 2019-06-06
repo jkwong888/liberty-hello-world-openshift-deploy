@@ -7,5 +7,5 @@ metadata:
 data:
   override-env-server.xml: |-
     <server>
-        <jndiEntry jndiName="env" value="dev" />
+        <jndiEntry jndiName="env" value="prod" />
     </server>
