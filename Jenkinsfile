@@ -15,7 +15,7 @@ pipeline {
             openshift.withProject() {
               files = findFiles(glob: '**/*.yaml')
 
-              for f in files {
+              for (File f : files) {
                 def objects = openshift.apply( readFile(f.path) )
                 println "Created objects from path ${f.path}:\n ${objects.names()}"
               }
