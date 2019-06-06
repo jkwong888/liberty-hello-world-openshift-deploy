@@ -15,7 +15,7 @@ pipeline {
             openshift.withProject() {
               sh "find ."
 
-              files = findFiles(glob: './*.yaml')
+              files = findFiles(glob: '**/*.yaml')
 
               println "${files}"
 
