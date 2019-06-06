@@ -13,7 +13,7 @@ pipeline {
         script {
           openshift.withCluster() {
             openshift.withProject() {
-              files = findFiles(glob: '*.yaml')
+              files = findFiles(glob: './*.yaml')
 
               for (File f : files) {
                 def objects = openshift.apply(readFile(f.path()))
