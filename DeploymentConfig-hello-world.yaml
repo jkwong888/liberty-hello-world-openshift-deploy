@@ -19,8 +19,11 @@ spec:
       - name: liberty-overrides
         configMap:
           name: liberty-overrides
+      - name: env-overrides
+        configMap:
+          name: env-overrides
       containers:
-      - image: harbor.jkwong.cloudns.cx/jkwong-pub/hello-world:18
+      - image: harbor.jkwong.cloudns.cx/jkwong-pub/hello-world:19
         imagePullPolicy: IfNotPresent
         livenessProbe:
           periodSeconds: 5
@@ -67,6 +70,10 @@ spec:
           mountPath: /config/configDropins/overrides/override-server.xml
           readOnly: true
           subPath: override-server.xml
+        - name: env-overrides
+          mountPath: /config/configDropins/overrides/override-env-server.xml
+          readOnly: true
+          subPath: override-env-server.xml
       securityContext:
         privileged: false
         capabilities:
