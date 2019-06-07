@@ -23,7 +23,7 @@ spec:
         configMap:
           name: env-overrides
       containers:
-      - image: harbor.jkwong.cloudns.cx/jkwong-pub/hello-world:31
+      - image: harbor.jkwong.cloudns.cx/jkwong-pub/hello-world:32
         imagePullPolicy: IfNotPresent
         livenessProbe:
           periodSeconds: 5
@@ -33,14 +33,13 @@ spec:
             port: 9080
         terminationMessagePolicy: File
         terminationMessagePath: /dev/termination-log
-        name: hello-world
-        readinessProbe:
-          periodSeconds: 5
-          initialDelaySeconds: 30
-          httpGet:
-            path: /
-            port: 9080
         resources: {}
+        securityContext:
+          privileged: false
+          capabilities:
+            drop:
+            - ALL
+          allowPrivilegeEscalation: false
         env:
         - name: WLP_LOGGING_CONSOLE_FORMAT
           value: json
@@ -74,12 +73,13 @@ spec:
           mountPath: /config/configDropins/overrides/override-env-server.xml
           readOnly: true
           subPath: override-env-server.xml
-      securityContext:
-        privileged: false
-        capabilities:
-          drop:
-          - ALL
-        allowPrivilegeEscalation: false
+        name: hello-world
+        readinessProbe:
+          periodSeconds: 5
+          initialDelaySeconds: 30
+          httpGet:
+            path: /
+            port: 9080
       restartPolicy: Always
       schedulerName: default-scheduler
       affinity:

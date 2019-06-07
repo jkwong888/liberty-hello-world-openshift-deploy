@@ -5,6 +5,7 @@ metadata:
 apiVersion: route.openshift.io/v1
 kind: Route
 spec:
+  host: ''
   tls:
     termination: edge
   to:
@@ -14,3 +15,5 @@ spec:
   port:
     targetPort: http-unsec
   wildcardPolicy: None
+status:
+  ingress: []
