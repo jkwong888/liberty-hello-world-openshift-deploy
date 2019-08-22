@@ -23,7 +23,7 @@ spec:
         configMap:
           name: env-overrides
       containers:
-      - image: harbor.jkwong.cloudns.cx/jkwong-pub/hello-world:44
+      - image: harbor.jkwong.cloudns.cx/jkwong-pub/hello-world:45
         imagePullPolicy: IfNotPresent
         livenessProbe:
           periodSeconds: 5
